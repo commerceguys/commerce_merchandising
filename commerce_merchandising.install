@@ -1,0 +1,16 @@
+<?php
+
+function commerce_merchandising_schema_alter(&$schema) {
+  $schema['commerce_line_item']['fields']['atc_product_node_id'] = array(
+    'type' => 'int',
+    'not null' => TRUE,
+    'unsigned' => TRUE,
+    'default' => 0,
+    'description' => 'Field added by commerce_merchandising to keep track of what product added the node.',
+  );
+}
+
+function commerce_merchandising_install() {
+  $schema = drupal_get_schema('commerce_line_item');
+  db_add_field('commerce_line_item', 'atc_product_node_id', $schema['fields']['atc_product_node_id']);
+}

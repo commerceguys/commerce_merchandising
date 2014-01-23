@@ -1,0 +1,16 @@
+<?php
+
+/**
+ * Implements hook_views_api().
+ */
+function commerce_merchandising_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'commerce_merchandising') . '/includes/views',
+  );
+}
+
+function commerce_merchandising_commerce_line_item_presave($line_item) {
+  if (empty($line_item->atc_product_node_id) && array_key_exists('content', $line_item->data))
+    $line_item->atc_product_node_id = $line_item->data['context']['entity']['entity_id'];
+}

@@ -1,0 +1,9 @@
+name = Commerce Merchandising
+description = Adds capabilities for handling merchandising tasks.
+core = 7.x
+package = Commerce Merchandising
+
+dependencies[] = commerce_product
+dependencies[] = commerce_line_item
+dependencies[] = commerce_order
+dependencies[] = views
